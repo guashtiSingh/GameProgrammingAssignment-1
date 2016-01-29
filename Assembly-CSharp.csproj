@@ -45,6 +45,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\_Scripts\CatController.cs" />
      <Compile Include="Assets\_Scripts\CheeseController.cs" />
      <Compile Include="Assets\_Scripts\KitchenController.cs" />
      <Compile Include="Assets\_Scripts\MouseController.cs" />
