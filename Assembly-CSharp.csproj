@@ -47,7 +47,9 @@
   <ItemGroup>
      <Compile Include="Assets\_Scripts\CatController.cs" />
      <Compile Include="Assets\_Scripts\CheeseController.cs" />
+     <Compile Include="Assets\_Scripts\GameController.cs" />
      <Compile Include="Assets\_Scripts\KitchenController.cs" />
+     <Compile Include="Assets\_Scripts\MouseCollider.cs" />
      <Compile Include="Assets\_Scripts\MouseController.cs" />
  <Reference Include="UnityEngine.Networking">
  <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
