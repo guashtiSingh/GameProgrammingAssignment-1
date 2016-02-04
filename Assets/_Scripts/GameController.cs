@@ -39,11 +39,13 @@ public class GameController : MonoBehaviour {
 	//Public Instance Variables
 	public int catNumber = 3;
 	public CatController cat;
+	public MouseController mouse;
+	public CheeseController cheese;
 	public Text LivesLabel;
 	public Text ScoreLabel;
 	public Text GameOverLabel;
-	public MouseController mouse;
-	public CheeseController cheese;
+	public Text HighScoreLabel;
+	public Button RestartButton;
 
 	// Use this for initialization
 	void Start () {
@@ -60,6 +62,8 @@ public class GameController : MonoBehaviour {
 		this.ScoreValue = 0;
 		this.LivesValue = 5;
 		this.GameOverLabel.enabled = false;
+		this.HighScoreLabel.enabled = false;
+		this.RestartButton.gameObject.SetActive(false);
 
 		for (int catCount = 0; catCount < this.catNumber; catCount++) {
 			Instantiate (cat.gameObject);
@@ -67,8 +71,19 @@ public class GameController : MonoBehaviour {
 	}
 
 	private void _endGame() {
+		this.HighScoreLabel.text = "High Score: " + this._scoreValue;
 		this.GameOverLabel.enabled = true;
+		this.HighScoreLabel.enabled = true;
+		this.LivesLabel.enabled = false;
+		this.ScoreLabel.enabled = false;
 		this.mouse.gameObject.SetActive(false);
 		this.cheese.gameObject.SetActive(false);
+		this.RestartButton.gameObject.SetActive(true);
+
+	}
+
+	//Public Methods
+	public void RestartButtonClick() {
+		Application.LoadLevel ("Main");
 	}
 }
