@@ -8,6 +8,9 @@ public class MouseCollider : MonoBehaviour {
 	private AudioSource _cheeseSound;
 	private AudioSource _catSound;
 
+	//Public Instance Variables
+	public GameController gameController;
+
 
 	// Use this for initialization
 	void Start () {
@@ -24,10 +27,12 @@ public class MouseCollider : MonoBehaviour {
 	public void OnTriggerEnter2D(Collider2D other) {
 		if (other.gameObject.CompareTag ("Cheese")) {
 			this._cheeseSound.Play ();
+			this.gameController.ScoreValue += 100;
 		}
 
 		if (other.gameObject.CompareTag ("Cat")) {
 			this._catSound.Play ();
+			this.gameController.LivesValue -= 1;
 		}
 	}
 }
