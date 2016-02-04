@@ -27,7 +27,12 @@ public class GameController : MonoBehaviour {
 
 		set {
 			this._livesValue = value;
-			this.LivesLabel.text = "Lives: " + this._livesValue;
+			if (this._livesValue <= 0) {
+				this._endGame ();
+			} else {
+				this.LivesLabel.text = "Lives: " + this._livesValue;
+			}	
+
 		}
 	}
 
@@ -36,6 +41,9 @@ public class GameController : MonoBehaviour {
 	public CatController cat;
 	public Text LivesLabel;
 	public Text ScoreLabel;
+	public Text GameOverLabel;
+	public MouseController mouse;
+	public CheeseController cheese;
 
 	// Use this for initialization
 	void Start () {
@@ -51,11 +59,16 @@ public class GameController : MonoBehaviour {
 
 		this.ScoreValue = 0;
 		this.LivesValue = 5;
+		this.GameOverLabel.enabled = false;
 
 		for (int catCount = 0; catCount < this.catNumber; catCount++) {
 			Instantiate (cat.gameObject);
 		}
 	}
 
-
+	private void _endGame() {
+		this.GameOverLabel.enabled = true;
+		this.mouse.gameObject.SetActive(false);
+		this.cheese.gameObject.SetActive(false);
+	}
 }
